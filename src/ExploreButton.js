@@ -14,7 +14,7 @@ render(){
             <Form.Group 
                 className="formOne" controlId="basicForm"
             >
-                <Form.Label>Enter the city you want to see</Form.Label>
+                <Form.Label>Enter the city you want to see</Form.Label><br></br>
                 <Form.Control type="city" placeholder="Enter city" onChange={(event) => this.props.updateSearch(event)} /> 
                 {/* onCHange(event) will run for each Key Press in the text field and updateing state in app */}
             </Form.Group>
