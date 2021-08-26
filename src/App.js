@@ -19,6 +19,7 @@ class App extends React.Component {
     const API = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_CITY_KEY}&q=${this.state.citySearch}&format=json`;
 
     try {
+      //await makes sure axios runs before you ever set state
       const response = await axios.get(API);
       this.setState({
         city: response.data[0],
