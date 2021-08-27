@@ -16,6 +16,7 @@ render(){
                 <Form.Control type="city" placeholder="Enter city" onChange={(event) => this.props.updateSearch(event)} /> 
                 {/* onCHange(event) will run for each Key Press in the text field and updateing state in app */}
             </Form.Group>
+            <br/>
         <Button variant="primary" type="Explore">
             Explore!
         </Button>
