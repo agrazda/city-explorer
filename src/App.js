@@ -7,6 +7,8 @@ import Alert from "react-bootstrap/Alert";
 import Weather from "./Weather";
 import Movies from "./Movies";
 
+const server = process.env.REACT_APP_SERVER || `http://localhost:3001`;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -40,7 +42,7 @@ class App extends React.Component {
   };
 
   getWeather = async (lat, lon) => {
-    const API = `http://localhost:3001/weather?lat=${lat}&lon=${lon}`;
+    const API = `${server}/weather?lat=${lat}&lon=${lon}`;
     try {
       const response = await axios.get(API);
       console.log(response.data);
@@ -55,7 +57,7 @@ class App extends React.Component {
   };
 
   getMovies = async (citySearch) => {
-    const API = `http://localhost:3001/movies?searchQuery=${citySearch}`;
+    const API = `${server}/movies?searchQuery=${citySearch}`;
     try {
       const response = await axios.get(API);
       console.log(response.data);
