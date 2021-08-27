@@ -4,6 +4,7 @@ import axios from "axios";
 import ExploreButton from "./ExploreButton";
 import Card from "react-bootstrap/Card";
 import Alert from "react-bootstrap/Alert";
+import Weather from "./Weather";
 
 class App extends React.Component {
   constructor(props) {
@@ -11,22 +12,41 @@ class App extends React.Component {
     this.state = {
       citySearch: "",
       city: {},
+      weather: [],
     };
   }
 
   getCity = async (event) => {
     event.preventDefault();
-    const API = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_CITY_KEY}&q=${this.state.citySearch}&format=json`;
+    const citySearch = this.state.citySearch;
+    const API = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_CITY_KEY}&q=${citySearch}&format=json`;
 
     try {
+      //await makes sure axios runs before you ever set state
       const response = await axios.get(API);
       this.setState({
         city: response.data[0],
         alert: "",
-      });
+      }); 
+      this.getWeather(citySearch)
     } catch (error) {
       this.setState({ alert: `${error}` });
     }
+  };
+
+  getWeather = async (citySearch) => { 
+    const API = `http://localhost:3001/weather?searchQuery=${citySearch}`;
+    try{
+      const response = await axios.get(API);
+      console.log(response.data)
+      this.setState({
+        weather: response.data,
+        weatherAlert: "",
+      })
+    } catch(error) {
+      this.setState({ weatherAlert: `${error}` });
+    }  
+      
   };
 
   updateSearch = (event) => {
@@ -42,6 +62,26 @@ class App extends React.Component {
           updateSearch={this.updateSearch}
           getCity={this.getCity}
         />
+        {this.state.weather[1] ? 
+        
+          <Weather 
+          weather={this.state.weather}
+        />
+        
+        : '' }
+        {this.state.weatherAlert ? (
+          <Alert
+            variant={"danger"}
+            style={{
+              margin: "0px 0px 20px 30px",
+              width: "60%",
+            }}
+          >
+            <Alert.Heading>{this.state.alert}</Alert.Heading>
+            <hr />
+            <p> There is no weather report for this location.</p>
+          </Alert>) : ''}
+
         {this.state.alert ? (
           <Alert
             variant={"danger"}
