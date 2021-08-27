@@ -5,6 +5,7 @@ import ExploreButton from "./ExploreButton";
 import Card from "react-bootstrap/Card";
 import Alert from "react-bootstrap/Alert";
 import Weather from "./Weather";
+import Movies from "./Movies";
 
 class App extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class App extends React.Component {
       citySearch: "",
       city: {},
       weather: [],
+      movie: [],
     };
   }
 
@@ -27,26 +29,44 @@ class App extends React.Component {
       this.setState({
         city: response.data[0],
         alert: "",
-      }); 
-      this.getWeather(citySearch)
+      });
+      const lat = this.state.city.lat;
+      const lon = this.state.city.lon;
+      this.getWeather(lat, lon);
+      this.getMovies(citySearch);
     } catch (error) {
       this.setState({ alert: `${error}` });
     }
   };
 
-  getWeather = async (citySearch) => { 
-    const API = `http://localhost:3001/weather?searchQuery=${citySearch}`;
-    try{
+  getWeather = async (lat, lon) => {
+    const API = `http://localhost:3001/weather?lat=${lat}&lon=${lon}`;
+    try {
       const response = await axios.get(API);
-      console.log(response.data)
+      console.log(response.data);
       this.setState({
         weather: response.data,
         weatherAlert: "",
-      })
-    } catch(error) {
+      });
+      console.log("test");
+    } catch (error) {
       this.setState({ weatherAlert: `${error}` });
-    }  
-      
+    }
+  };
+
+  getMovies = async (citySearch) => {
+    const API = `http://localhost:3001/movies?searchQuery=${citySearch}`;
+    try {
+      const response = await axios.get(API);
+      console.log(response.data);
+      this.setState({
+        movie: response.data,
+        movieAlert: "",
+      });
+      console.log("test");
+    } catch (error) {
+      this.setState({ movieAlert: `${error}` });
+    }
   };
 
   updateSearch = (event) => {
@@ -62,13 +82,7 @@ class App extends React.Component {
           updateSearch={this.updateSearch}
           getCity={this.getCity}
         />
-        {this.state.weather[1] ? 
-        
-          <Weather 
-          weather={this.state.weather}
-        />
-        
-        : '' }
+        {this.state.weather[1] ? <Weather weather={this.state.weather} /> : ""}
         {this.state.weatherAlert ? (
           <Alert
             variant={"danger"}
@@ -80,7 +94,26 @@ class App extends React.Component {
             <Alert.Heading>{this.state.alert}</Alert.Heading>
             <hr />
             <p> There is no weather report for this location.</p>
-          </Alert>) : ''}
+          </Alert>
+        ) : "" 
+        }
+
+        {this.state.movie[1] ? <Movies movie={this.state.movie} /> : ""}
+        {this.state.movieAlert ? (
+          <Alert
+            variant={"danger"}
+            style={{
+              margin: "0px 0px 20px 30px",
+              width: "60%",
+            }}
+          >
+            <Alert.Heading>{this.state.alert}</Alert.Heading>
+            <hr />
+            <p> There is no movie report for this location.</p>
+          </Alert>
+        ) : ""
+          
+        }
 
         {this.state.alert ? (
           <Alert

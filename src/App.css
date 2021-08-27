@@ -55,6 +55,16 @@ img {
   justify-content: center;
   margin-left: 100px;
   background-color: burlywood;
-  
+
 }
 
+.weatherCard {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 700px;
+}
+
+form {
+  display: flex;
+}
