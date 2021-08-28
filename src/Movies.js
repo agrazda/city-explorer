@@ -1,19 +1,20 @@
 import React from "react";
-import { Container, Card } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Movie from './Movie';
 
 class Movies extends React.Component {
   render() {
     return (
       <div>
         <Container>
-          {this.props.movie.map((movie) => (
-            <Card className="movieCard">
-              <Card.Text>{movie.title}</Card.Text>
-            </Card>
-          ))}
+          {this.props.movie.map(movie => {
+            return <Movie movie={movie}/>
+            })         
+          }
         </Container>
       </div>
     );
   }
 }
+
 export default Movies;

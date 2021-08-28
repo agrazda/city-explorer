@@ -7,6 +7,7 @@ import Alert from "react-bootstrap/Alert";
 import Weather from "./Weather";
 import Movies from "./Movies";
 
+
 const server = process.env.REACT_APP_SERVER || `http://localhost:3001`;
 
 class App extends React.Component {
