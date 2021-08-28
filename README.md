@@ -1,48 +1,45 @@
 # City Explorer
 
-**Author**: Alex Grazda
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Author**: Alex Grazda  
+**Version**: 1.0.0
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+This Project consists of allowing the client to search for a city in return they will get a map view, the weather for the upcoming 5 days, and a list of movies that contain that cities name.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+- Create Repository
+- Capture API's
+- Deployment Site
+- nodemon
+- axios
+
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+- JavaScript
+- React
+- React-Bootstrap
+- CSS
 
-## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+- Chance Harmon
+- Hexx King
+- Kayson Bradley
+- Kristian Esvelt
+- Patrick Laurion
+- Stephanie Riehle
 
 
 ![WRRC](./Data-Flow.png)
 ![WRRC2](./Data-Flow-2.png)
 
 
-Name of feature: ________________________________
-
-Estimate of time needed to complete: _____
-
-Start time: _____
-
-Finish time: _____
-
-Actual time needed to complete: _____
-
-
-
-Name of feature: ________________________________
-
-Estimate of time needed to complete: _____
-
-Start time: _____
-
-Finish time: _____
-
-Actual time needed to complete: _____
+| Time Estimate | Name of Feature | Start Time | Finish Time | Actual Time Needed | Collaborators |
+|:-------------:|:---------------:|------------|-------------|--------------------|---------------|
+| 2hrs          | Lab 06          | 1:00       | 2:00am      | Too Long           | Chance Harmon, Kristian Esvelt, Stephanie Riehle          |
+| 4 hours       | Lab 07          | 1:00       | 12:00am     | 8hrs               | Chance Harmon, Hexx King, Kason Bradley, Stephanie Riehle|
+| 4 hours       | Lab 08          | 2:00pm     | 1:00am      | Long Time          | Kason Bradley, Kristian Esvelt, Chance Harmon, Patrick Laurion, |
+| 4 hours       | Lab 09          | 3:30 pm    | 01:15am     | No Clue            | Kristian Esvelt, Chance Harmon, Patrick Laurion, Stephanie Riehle     |
+| TBD           | Lab 10          |            |             |                    |               |
