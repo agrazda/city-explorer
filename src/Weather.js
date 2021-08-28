@@ -9,7 +9,7 @@ class Weather extends React.Component {
       <div>
         <Container>
           {this.props.weather.map(forcast => {
-            return <WeatherDay day={forcast}/>
+            return <WeatherDay day={forcast} />
           })
           } 
             {/* // <Card className="weatherCard">
